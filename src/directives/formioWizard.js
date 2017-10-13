@@ -1,6 +1,4 @@
-var isNaN = require('lodash/isNAN');
-var isFinite = require('lodash/isFinite');
-var _ = require('lodash')
+var _ = require('lodash');
 
 module.exports = function() {
   return {
@@ -394,7 +392,7 @@ module.exports = function() {
                 var next = nextPage;
                 eval('(function(data) {' + currentPage.nextPage.toString() + '})($scope.submission.data)');
                 page = next;
-                if (!isNaN(parseInt(page, 10)) && isFinite(page)) {
+                if (!_.isNaN(parseInt(page, 10)) && _.isFinite(page)) {
                   return page;
                 }
                 if (typeof page !== 'string') {
@@ -419,7 +417,7 @@ module.exports = function() {
                 form: $scope.page
               });
               var newPage = parseInt(result, 10);
-              if (!isNaN(parseInt(newPage, 10)) && isFinite(newPage)) {
+              if (!_.isNaN(parseInt(newPage, 10)) && _.isFinite(newPage)) {
                 return newPage;
               }
 
