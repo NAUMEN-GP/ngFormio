@@ -37492,6 +37492,10 @@ module.exports = [
           if ($scope.gridCol !== undefined) {
             $scope.componentId += ('-' + $scope.gridCol);
           }
+
+          $scope.builderSettings = function(){
+              console.log("Builder settings of " + $scope.component.type);
+          }
         }
       ]
     };
