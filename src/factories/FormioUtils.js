@@ -332,10 +332,14 @@ module.exports = function() {
         '{{ component.label | formioTranslate:null:options.building }} ' +
         '<formio-component-tooltip></formio-component-tooltip>' +
         '</label>';
+      var inputDescription =  '<div ng-if="!!component.description" class="help-block">' +
+          '<span>{{ component.description | formioTranslate:null:options.building }}</span>' +
+          '</div>';
       var requiredInline = '<span ng-if="(component.hideLabel === true || component.label === \'\' || !component.label) && isRequired(component)" class="glyphicon glyphicon-asterisk form-control-feedback field-required-inline" aria-hidden="true"></span>';
       var template =
         '<div ng-if="!component.multiple">' +
           inputLabel +
+          inputDescription +
           '<div class="input-group">' +
             '<div class="input-group-addon" ng-if="!!component.prefix">{{ component.prefix }}</div>' +
             input +
@@ -348,6 +352,7 @@ module.exports = function() {
         '</div>' +
         '<div ng-if="component.multiple"><table class="table table-bordered">' +
           inputLabel +
+          inputDescription +
           '<tr ng-repeat="value in data[component.key] track by $index">' +
             '<td>' +
               '<div class="input-group">' +
@@ -365,10 +370,7 @@ module.exports = function() {
           '<tr>' +
             '<td colspan="2"><a ng-click="(readOnly || formioForm.submitting)? null: addFieldValue() " ng-disabled = "readOnly || formioForm.submitting" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {{ component.addAnother || "Add Another" | formioTranslate:null:options.building }}</a></td>' +
           '</tr>' +
-        '</table></div>' +
-        '<div ng-if="!!component.description" class="help-block">' +
-          '<span>{{ component.description | formioTranslate:null:options.building }}</span>' +
-        '</div>';
+        '</table></div>';
       return template;
     },
 

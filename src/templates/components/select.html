@@ -2,6 +2,9 @@
   {{ component.label | formioTranslate:null:options.building }}
   <formio-component-tooltip></formio-component-tooltip>
 </label>
+<div ng-if="!!component.description" class="help-block">
+    <span>{{ component.description }}</span>
+</div>
 <span ng-if="!component.label && isRequired(component)" class="glyphicon glyphicon-asterisk form-control-feedback field-required-inline" aria-hidden="true"></span>
 <ui-select
   ui-select-required
@@ -24,7 +27,4 @@
     <button ng-if="hasNextPage && ($index == $select.items.length-1)" class="btn btn-success btn-block" ng-click="loadMoreItems($select, $event)" ng-disabled="selectLoading">Load more...</button>
   </ui-select-choices>
 </ui-select>
-<div ng-if="!!component.description" class="help-block">
-  <span>{{ component.description }}</span>
-</div>
 <formio-errors ng-if="::!options.building"></formio-errors>

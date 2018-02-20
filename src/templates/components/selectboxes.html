@@ -3,6 +3,9 @@
     {{ component.label }}
     <formio-component-tooltip></formio-component-tooltip>
   </label>
+  <div ng-if="!!component.description" class="help-block">
+      <span>{{ component.description }}</span>
+  </div>
   <formio-select-boxes
     name="{{componentId}}"
     ng-model="data[component.key]"
@@ -16,8 +19,6 @@
     grid-col="gridCol"
     options="options"
   ></formio-select-boxes>
-  <div ng-if="!!component.description" class="help-block">
-    <span>{{ component.description }}</span>
-  </div>
+
   <formio-errors ng-if="::!options.building"></formio-errors>
 </div>
